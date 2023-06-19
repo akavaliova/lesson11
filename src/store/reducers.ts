@@ -1,4 +1,5 @@
 import { AnyAction, combineReducers } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
 const cashDefaultState = {
   cash: 0,
@@ -6,7 +7,7 @@ const cashDefaultState = {
 
 export const cashSlice = createSlice ({
   name: 'cash',
-  cashDefaultState, 
+  initialState: cashDefaultState, 
 
 reducers: {
   addCash: (state, action) => {
