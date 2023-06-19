@@ -1,26 +1,26 @@
-import { AnyAction, combineReducers } from "redux";
 import { createSlice } from "@reduxjs/toolkit";
+import { AnyAction, combineReducers } from "redux";
 
 const cashDefaultState = {
   cash: 0,
 };
 
-export const cashSlice = createSlice ({
-  name: 'cash',
-  initialState: cashDefaultState, 
+export const cashSlice = createSlice({
+  name: "cash",
+  initialState: cashDefaultState,
+  reducers: {
+    addCash: (state, action) => {
+      // Redux Toolkit allows us to write "mutating" logic in reducers. It
+      // doesn't actually mutate the state because it uses the Immer library,
+      // which detects changes to a "draft state" and produces a brand new
+      // immutable state based off those changes
+      state.cash = action.payload;
+    },
+  },
+});
 
-reducers: {
-  addCash: (state, action) => {
-    // Redux Toolkit allows us to write "mutating" logic in reducers. It
-    // doesn't actually mutate the state because it uses the Immer library,
-    // which detects changes to a "draft state" and produces a brand new
-    // immutable state based off those changes
-    state.cash = action.payload
-  }}
-})
-
-export const cashReducer = cashSlice
-export const { addCash } = cashSlice.actions
+export const cashReducer = cashSlice.reducer;
+export const { addCash } = cashSlice.actions;
 
 const nickDefaultState = {
   username: "nickname",
@@ -28,17 +28,6 @@ const nickDefaultState = {
 
 const usersDefaultState = {
   users: [],
-};
-
-const cashReducer = (state = cashDefaultState, action: AnyAction) => {
-  switch (action.type) {
-    case "ADD_CASH":
-      return { ...state, cash: state.cash + action.payload };
-    case "GET_CASH":
-      return { ...state, cash: state.cash - action.payload };
-    default:
-      return state;
-  }
 };
 
 const nickReducer = (state = nickDefaultState, action: AnyAction) => {
@@ -65,7 +54,6 @@ const usersReducer = (state = usersDefaultState, action: AnyAction) => {
 };
 
 export const rootReducer = combineReducers({
-  cash: cashReducer,
   nick: nickReducer,
   users: usersReducer,
 });

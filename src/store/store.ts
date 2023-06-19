@@ -2,11 +2,11 @@
 // import { rootReducer } from "./reducers";
 // export const store = createStore(rootReducer);
 
-import { configureStore } from '@reduxjs/toolkit',
+import { configureStore } from '@reduxjs/toolkit';
 import {cashReducer} from "./reducers";
 
 export const store = configureStore({
-  reducer: {cash:cashReducer},
+  reducer: {cashReducer},
 })
 
 // Infer the `RootState` and `AppDispatch` types from the store itself
