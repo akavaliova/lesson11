@@ -8,12 +8,13 @@ import {
   removeUserAction,
 } from "./store/actions";
 import { addCash } from "./store/reducers";
+import { RootState } from "./store/store";
 
 function App() {
   const dispatch = useDispatch();
-  const cash = useSelector((state: any) => state.cash);
-  const nick = useSelector((state: any) => state.nick);
-  const users = useSelector((state: any) => state.users);
+  const cash = useSelector((state: RootState) => state.cash.cash);
+  // const nick = useSelector((state: any) => state.nick);
+  // const users = useSelector((state: any) => state.users);
   const store = useStore();
 
   console.log(store.getState());
@@ -41,7 +42,7 @@ function App() {
   return (
     <div className='App'>
       <div>{cash}</div>
-      <div>{nick}</div>
+      {/* <div>{nick}</div> */}
       <div>
         <button onClick={() => changeNick(prompt("Введите ник") || "Any")}>
           Сменить ник
@@ -56,7 +57,7 @@ function App() {
           Добавить юзера
         </button>
       </div>
-      {users.map((user: string) => {
+      {/* {users.map((user: string) => {
         return (
           <div
             key={user}
@@ -67,7 +68,7 @@ function App() {
             {user}
           </div>
         );
-      })}
+      })} */}
     </div>
   );
 }
